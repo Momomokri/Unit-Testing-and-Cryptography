@@ -7,7 +7,7 @@ def caesar_encode(text, n):
     new_string = ""
     for i in range(len(text)):
         num = alpha.find(text[i]) + n
-        new_string += alpha[num % 25]
+        new_string += alpha[num % 26]
     return new_string
 
 
@@ -15,7 +15,7 @@ def caesar_decode(text, n):
     new_string = ""
     for i in range(len(text)):
         num = alpha.find(text[i]) - n
-        new_string += alpha[num % 25]
+        new_string += alpha[num % 26]
     return new_string
 
 
