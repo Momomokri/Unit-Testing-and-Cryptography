@@ -4,6 +4,12 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def sub_encode(text, codebet):
+    """
+    Encrypts text using the cipher alphabet and returns the result.
+    :param text: Text to be encrypted.
+    :param codebet: The cipher alphabet.
+    :return: The encrypted text.
+    """
     new_string = ""
     for i in range(len(text)):
         num = alpha.find(text[i])
@@ -12,6 +18,12 @@ def sub_encode(text, codebet):
 
 
 def sub_decode(text, codebet):
+    """
+    Decrypts text using the cipher alphabet and returns the result.
+    :param text: The encrypted text to be decoded.
+    :param codebet: The cipher alphabet.
+    :return: The decrypted text.
+    """
     new_string = ""
     for i in range(len(text)):
         num = codebet.find(text[i])
