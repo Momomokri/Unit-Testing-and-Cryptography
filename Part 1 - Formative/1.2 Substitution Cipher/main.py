@@ -26,12 +26,15 @@ def sub_decode(text, codebet):
     """
     new_string = ""
     for i in range(len(text)):
-        num = codebet.find(text[i])
-        new_string += alpha[num]
+        if (text[i] != " "):
+            num = codebet.find(text[i])
+            new_string += alpha[num]
+        else:
+            new_string += " "
     return new_string
 
 
-test = "HELLOWORLD"
+test = "  "
 cipher_alphabet = "WJKUXVBMIYDTPLHZGONCRSAEFQ"
 enc = sub_encode(test, cipher_alphabet)
 dec = sub_decode(enc, cipher_alphabet)
