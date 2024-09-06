@@ -12,8 +12,15 @@ def sub_encode(text, codebet):
     """
     new_string = ""
     for i in range(len(text)):
-        num = alpha.find(text[i])
-        new_string += codebet[num]
+        if (text[i] != " "):
+            if text[i].islower():
+                num = alpha.find(text[i].upper())
+                new_string += codebet[num].lower()
+            else:
+                num = alpha.find(text[i])
+                new_string += codebet[num]
+        else:
+            new_string += " "
     return new_string
 
 
@@ -27,8 +34,12 @@ def sub_decode(text, codebet):
     new_string = ""
     for i in range(len(text)):
         if (text[i] != " "):
-            num = codebet.find(text[i])
-            new_string += alpha[num]
+            if text[i].islower():
+                num = codebet.find(text[i].upper())
+                new_string += alpha[num].lower()
+            else:
+                num = codebet.find(text[i])
+                new_string += alpha[num]
         else:
             new_string += " "
     return new_string

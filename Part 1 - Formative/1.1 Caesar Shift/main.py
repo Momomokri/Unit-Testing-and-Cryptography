@@ -12,8 +12,15 @@ def caesar_encode(text, n):
     """
     new_string = ""
     for i in range(len(text)):
-        num = alpha.find(text[i]) + n
-        new_string += alpha[num % 26]
+        if text[i] != " ":
+            if text[i].islower():
+                num = alpha.find(text[i].upper()) + n
+                new_string += alpha[num % 26].lower()
+            else:
+                num = alpha.find(text[i]) + n
+                new_string += alpha[num % 26]
+        else:
+            new_string += " "
     return new_string
 
 
@@ -26,8 +33,15 @@ def caesar_decode(text, n):
     """
     new_string = ""
     for i in range(len(text)):
-        num = alpha.find(text[i]) - n
-        new_string += alpha[num % 26]
+        if text[i] != " ":
+            if text[i].islower():
+                num = alpha.find(text[i].upper()) - n
+                new_string += alpha[num % 26].lower()
+            else:
+                num = alpha.find(text[i]) - n
+                new_string += alpha[num % 26]
+        else:
+            new_string += " "
     return new_string
 
 
