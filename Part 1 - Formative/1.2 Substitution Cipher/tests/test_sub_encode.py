@@ -23,3 +23,9 @@ class TestSubEncode(TestCase):
 
     def test_sub_encode_space_in_middle(self):
         self.assertEqual(sub_encode("GOBBLE DEGOOK", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "BHJJTX UXBHHD")
+
+    def test_sub_encode_numbers(self):
+        self.assertEqual(sub_encode("GOBBLEDEGOOK9", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "BHJJTXUXBHHD9")
+
+    def test_sub_encode_punctuation(self):
+        self.assertEqual(sub_encode("GOBBLEDEGOOK!", "WJKUXVBMIYDTPLHZGONCRSAEFQ"), "BHJJTXUXBHHD!")

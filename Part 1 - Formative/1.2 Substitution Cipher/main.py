@@ -12,15 +12,15 @@ def sub_encode(text, codebet):
     """
     new_string = ""
     for i in range(len(text)):
-        if (text[i] != " "):
+        if text[i].upper() not in alpha:
+            new_string += text[i]
+        else:
             if text[i].islower():
                 num = alpha.find(text[i].upper())
                 new_string += codebet[num].lower()
             else:
                 num = alpha.find(text[i])
                 new_string += codebet[num]
-        else:
-            new_string += " "
     return new_string
 
 
@@ -33,19 +33,19 @@ def sub_decode(text, codebet):
     """
     new_string = ""
     for i in range(len(text)):
-        if (text[i] != " "):
+        if text[i].upper() not in alpha:
+            new_string += text[i]
+        else:
             if text[i].islower():
                 num = codebet.find(text[i].upper())
                 new_string += alpha[num].lower()
             else:
                 num = codebet.find(text[i])
                 new_string += alpha[num]
-        else:
-            new_string += " "
     return new_string
 
 
-test = "  "
+test = "yes"
 cipher_alphabet = "WJKUXVBMIYDTPLHZGONCRSAEFQ"
 enc = sub_encode(test, cipher_alphabet)
 dec = sub_decode(enc, cipher_alphabet)
