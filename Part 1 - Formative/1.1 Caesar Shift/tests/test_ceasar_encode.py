@@ -23,3 +23,9 @@ class TestCeasarEncode(TestCase):
 
     def test_caesar_encode_space_in_middle(self):
         self.assertEqual(caesar_encode("GOBBLE DEGOOK", 5), "LTGGQJ IJLTTP")
+
+    def test_caesar_encode_punctuation(self):
+        self.assertEqual(caesar_encode("GOBBLEDEGOOK!", 5), "LTGGQJIJLTTP!")
+
+    def test_caesar_encode_numbers(self):
+        self.assertEqual(caesar_encode("GOBBLEDEGOOK9", 5), "LTGGQJIJLTTP9")
