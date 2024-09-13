@@ -2,47 +2,47 @@
 
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_"
 
-def vig_encode(text, keyword):
-  """
-  Encodes text using vigenere cipher rules.
-  :param text: The text to be encoded.
-  :param keyword: The keyword to be used for the vigenere cipher.
-  :return: The encoded text.
-  """
-  new_string = ""
-  for i in range(len(text)):
-    if text[i].upper() not in alpha:
-      continue
-    else:
-      if text[i].islower():
-        num = alpha.find(text[i].upper()) + alpha.find(keyword[i % len(keyword)])
-        new_string += alpha[num % len(alpha)].lower()
-      else:
-        num = alpha.find(text[i]) + alpha.find(keyword[i % len(keyword)])
-        new_string += alpha[num % len(alpha)]
 
-  return new_string
+def vig_encode(text, keyword):
+    """
+    Encodes text using vigenere cipher rules.
+    :param text: The text to be encoded.
+    :param keyword: The keyword to be used for the vigenere cipher.
+    :return: The encoded text.
+    """
+    new_string = ""
+    for i in range(len(text)):
+        if text[i].upper() not in alpha:
+            continue
+        else:
+            if text[i].islower():
+                num = alpha.find(text[i].upper()) + alpha.find(keyword[i % len(keyword)])
+                new_string += alpha[num % len(alpha)].lower()
+            else:
+                num = alpha.find(text[i]) + alpha.find(keyword[i % len(keyword)])
+                new_string += alpha[num % len(alpha)]
+    return new_string
 
 
 def vig_decode(text, keyword):
-  """
-  Decodes text using vigenere cipher rules.
-  :param text: The text to be decoded.
-  :param keyword: The keyword to be used for the vigenere cipher.
-  :return: The decoded text.
-  """
-  new_string = ""
-  for i in range(len(text)):
-    if text[i].upper() not in alpha:
-      continue
-    else:
-      if text[i].islower():
-        num = alpha.find(text[i].upper()) - alpha.find(keyword[i % len(keyword)])
-        new_string += alpha[num % len(alpha)].lower()
-      else:
-        num = alpha.find(text[i]) - alpha.find(keyword[i % len(keyword)])
-        new_string += alpha[num % len(alpha)]
-  return new_string
+    """
+    Decodes text using vigenere cipher rules.
+    :param text: The text to be decoded.
+    :param keyword: The keyword to be used for the vigenere cipher.
+    :return: The decoded text.
+    """
+    new_string = ""
+    for i in range(len(text)):
+        if text[i].upper() not in alpha:
+            continue
+        else:
+            if text[i].islower():
+                num = alpha.find(text[i].upper()) - alpha.find(keyword[i % len(keyword)])
+                new_string += alpha[num % len(alpha)].lower()
+            else:
+                num = alpha.find(text[i]) - alpha.find(keyword[i % len(keyword)])
+                new_string += alpha[num % len(alpha)]
+    return new_string
 
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"

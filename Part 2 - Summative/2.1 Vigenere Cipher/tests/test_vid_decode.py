@@ -16,7 +16,7 @@ class TestCeasarEncode(TestCase):
         self.assertEqual(vig_decode("", "TEST"), "")
 
     def test_vig_decode_whitespace(self):
-        self.assertEqual(vig_decode("SD", "TEST"), "__")
+        self.assertEqual(vig_decode("SD", "TEST"), "")
 
     def test_vig_decode_upper_and_lowercase(self):
         self.assertEqual(vig_decode("ZsTuDiVxZsFc", "TEST"), "GoBbLeDeGoOk")
