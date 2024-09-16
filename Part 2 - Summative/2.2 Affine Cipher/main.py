@@ -20,10 +20,46 @@ def mod_inverse(a, m):
 
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
-    return ''
+    temp_str = ""
+    new_string = ""
+    for i in range(len(text)):
+        if text[i].upper() not in alpha:
+            continue
+        else:
+            num = alpha.find(text[i].upper()) * a % 26
+            temp_str += alpha[num]
+    for i in range(len(text)):
+        if temp_str[i].upper() not in alpha:
+            new_string += temp_str[i]
+        else:
+            if temp_str[i].islower():
+                num = alpha.find(temp_str[i].upper()) + b
+                new_string += alpha[num % 26].lower()
+            else:
+                num = alpha.find(temp_str[i]) + b
+                new_string += alpha[num % 26]
+    return new_string
 
 def affine_decode(text, a, b):
-    return ''
+    temp_str = ""
+    new_string = ""
+    for i in range(len(text)):
+        if text[i].upper() not in alpha:
+            temp_str += text[i]
+        else:
+            if text[i].islower():
+                num = alpha.find(text[i].upper()) - b
+                temp_str += alpha[num % 26].lower()
+            else:
+                num = alpha.find(text[i]) - b
+                temp_str += alpha[num % 26]
+    for i in range(len(text)):
+        if temp_str[i].upper() not in alpha:
+            continue
+        else:
+            num = alpha.find(temp_str[i].upper()) * mod_inverse(a, 26) % 26
+            new_string += alpha[num]
+    return new_string
 
 test = "HELLOWORLD"
 a = 3
@@ -39,10 +75,17 @@ print(dec)
 # PART 2
 # These  are the functions you'll need to write:
 def convert_to_num(ngram):
-    return 0
-
+    num = 0
+    for i in range(len(ngram)):
+        num += alpha.find(ngram[i]) * (26**i)
+    return num
 def convert_to_text(num, n):
-    return ''
+    new_str = ""
+    quo = num
+    for i in range(n):
+        new_str += alpha[quo % 26]
+        quo //= 26
+    return new_str
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 l = len(test)
