@@ -101,18 +101,14 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    while len(text) % n != 0:
+        text += "X"
     new_str = ""
-    index = 0
-    num_x = len(text) % n
-    if num_x > 0:
-        for i in range(n - num_x):
-            text += "X"
-    num_grams = len(text) // n
-    for i in range(n):
-        n_gram_num = convert_to_num(text[index:(index + num_grams)])
-        n_gram_num = a * n_gram_num + b % (26**n)
-        new_str += convert_to_text(n_gram_num, num_grams)
-        index += num_grams
+    for i in range(0, len(text), n):
+        n_gram = text[i:(i + n)]
+        x = convert_to_num(n_gram)
+        number = (a * x + b) % (26 ** n)
+        new_str += convert_to_text(number, n)
     return new_str
 
 
@@ -120,13 +116,11 @@ def affine_n_encode(text, n, a, b):
 
 def affine_n_decode(text, n, a, b):
     new_str = ""
-    index = 0
-    num_grams = len(text) // n
-    for i in range(n):
-        n_gram_num = convert_to_num(text[index:(index + num_grams)])
-        n_gram_num = mod_inverse(a, 26**n) * (n_gram_num - b) % (26 ** n)
-        new_str += convert_to_text(n_gram_num, num_grams)
-        index += num_grams
+    for i in range(0, len(text), n):
+        n_gram = text[i:(i + n)]
+        x = convert_to_num(n_gram)
+        number = (mod_inverse(a, 26**n) * (x - b)) % (26 ** n)
+        new_str += convert_to_text(number, n)
     return new_str
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
