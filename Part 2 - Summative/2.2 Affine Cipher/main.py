@@ -22,6 +22,13 @@ def mod_inverse(a, m):
 
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
+    """
+    Encodes a string using Affine Cipher.
+    :param text: The text to encode.
+    :param a: The value to multiply by (slope)
+    :param b: The value to shift by (intercept)
+    :return: The encoded text.
+    """
     temp_str = ""
     new_string = ""
     for i in range(len(text)):
@@ -47,6 +54,13 @@ def affine_encode(text, a, b):
 
 
 def affine_decode(text, a, b):
+    """
+    Decodes a string using Affine Cipher.
+    :param text: The text to decode.
+    :param a: The value to use in mod inverse (slope)
+    :param b: The value to shift back by (intercept)
+    :return: The decoded text.
+    """
     temp_str = ""
     new_string = ""
     for i in range(len(text)):
@@ -84,6 +98,11 @@ print(dec)
 # PART 2
 # These  are the functions you'll need to write:
 def convert_to_num(ngram):
+    """
+    Converts a text into a number.
+    :param ngram: The text to convert.
+    :return: A number based on the input text.
+    """
     num = 0
     for i in range(len(ngram)):
         if ngram[i] not in alpha:
@@ -94,6 +113,12 @@ def convert_to_num(ngram):
 
 
 def convert_to_text(num, n):
+    """
+    Converts a number to a text.
+    :param num: The number to convert.
+    :param n: The length of the text to be converted to.
+    :return: The converted text.
+    """
     new_str = ""
     quo = num
     for i in range(n):
@@ -113,6 +138,14 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    """
+    Encodes a string using Affine Cipher and Ngram ciphering.
+    :param text: The text to encode.
+    :param n: The amount of strings to create from text.
+    :param a: The value to multiply by (slope)
+    :param b: The value to shift by (intercept)
+    :return: The encoded text.
+    """
     new_str = ""
     for i in range(len(text)):
         if text[i].upper() in alpha:
@@ -131,6 +164,14 @@ def affine_n_encode(text, n, a, b):
 
 
 def affine_n_decode(text, n, a, b):
+    """
+    Decodes a string using Affine Cipher and Ngram ciphering.
+    :param text: The text to decode.
+    :param n: The amount of strings to create from text.
+    :param a: The value to use in mod inverse (slope)
+    :param b: The value to shift back by (intercept)
+    :return: The decoded text.
+    """
     new_str = ""
     for i in range(len(text)):
         if text[i].upper() in alpha:
