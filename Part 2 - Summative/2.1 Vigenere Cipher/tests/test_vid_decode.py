@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from main import vig_decode
 
-class TestCeasarEncode(TestCase):
+class TestVigDecode(TestCase):
     def test_vig_decode_normal(self):
         self.assertEqual(vig_decode("ZSTUDIVXZSFC", "TEST"), "GOBBLEDEGOOK")
 

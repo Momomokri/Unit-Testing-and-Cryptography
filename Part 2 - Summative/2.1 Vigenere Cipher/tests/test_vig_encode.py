@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from main import vig_encode
 
-class TestCeasarEncode(TestCase):
+class TestVigEncode(TestCase):
     def test_vig_encode_normal(self):
         self.assertEqual(vig_encode("GOBBLEDEGOOK", "TEST"), "ZSTUDIVXZSFC")
 
